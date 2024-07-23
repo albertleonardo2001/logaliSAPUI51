@@ -1,0 +1,171 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "logaligroup.html5module",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.14.1",
+      "toolsId": "34628117-a9e8-4946-bcba-6f2d7c0506b7"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZEMPLOYEES_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZEMPLOYEES_SRV": {
+        "uri": "sap/opu/odata/sap/ZEMPLOYEES_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.126.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "logaligroup.html5module.i18n.i18n"
+        }
+      },
+      "odataModel": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "OneWay",
+          "defaultCountMode": "Request"
+        },
+        "dataSource": "ZEMPLOYEES_SRV",
+        "preload": true
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "logaligroup.html5module.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": true
+      },
+      "routes": [
+        {
+          "name": "menu",
+          "pattern": "",
+          "target": [
+            "menu"
+          ]
+        },
+        {
+          "name": "CreateEmployee",
+          "pattern": "CreateEmployee",
+          "target": [
+            "CreateEmployee"
+          ]
+        },
+        {
+          "name": "ShowEmployee",
+          "pattern": "ShowEmployee",
+          "target": [
+            "ShowEmployee"
+          ]
+        }
+      ],
+      "targets": {
+        "menu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": true,
+          "viewId": "Menu",
+          "viewName": "Menu"
+        },
+        "CreateEmployee": {
+          "viewType": "XML",
+          "viewName": "CreateEmployee",
+          "viewId": "CreateEmployee",
+          "transition": "slide",
+          "clearControlAggregation": true
+        },
+        "App": {
+          "viewType": "XML",
+          "viewName": "App"
+        },
+        "ShowEmployee": {
+          "viewType": "XML",
+          "viewName": "ShowEmployee",
+          "viewId": "ShowEmployee",
+          "transition": "slide",
+          "clearControlAggregation": true
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "logaligroup.html5module.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
